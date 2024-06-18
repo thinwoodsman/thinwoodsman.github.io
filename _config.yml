@@ -1,10 +1,10 @@
 title: The Sorry Scheme of Things Entire
-email: your-email@example.com
+#email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Dissatisfaction with the state of the art
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://thinwoodsman.github.io" 
-twitter_username: n/a
+#twitter_username: n/a
 github_username:  thinwoodsman
 
 permalink: /:title/
