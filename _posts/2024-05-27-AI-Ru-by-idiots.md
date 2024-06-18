@@ -1,7 +1,9 @@
+---
 layout: post
 title: "AI is run by morons"
 date: 2024-05-27 08:08:13 -0600
 categories: Rant AI
+---
 [https://www.theregister.com/2024/05/23/ai_untested_unstable]()
 
 > It would appear that the biggest technological innovation since the introduction of the world wide web a generation ago has been productized by a collection of fundamentally unserious people and organizations who appear to have no grasp of what it means to run a software business, nor any desire to implement any of the systems or processes needed to affect that seriousness.

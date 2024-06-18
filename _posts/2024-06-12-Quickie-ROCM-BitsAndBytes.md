@@ -1,7 +1,9 @@
+---
 layout: post
 title: "Quickie: ROCm bitsandbytes 'NoneType' object has no attribute 'split'"
 date: 2024-06-12 20:08:13 -0600
 categories: ROCm Transformers BitsAndBytes LLM AI
+---
 So you're trying to serve a model on some half-baked LLM project like LMQL, and you've got pytorch-rocm installed because you're using an AMD video card, and you get stuck on the bitsandbytes CUDA check:
 
 ```
