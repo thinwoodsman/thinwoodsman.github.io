@@ -2,7 +2,8 @@
 layout: post
 title: "AI is run by morons"
 date: 2024-05-27 08:08:13 -0600
-categories: Rant AI
+tags: Rant AI
+category: misc
 ---
 [https://www.theregister.com/2024/05/23/ai_untested_unstable]()
 
