@@ -1,6 +1,6 @@
 layout: post
 title: "RIP, Blogger"
-date: 2024-03-DD 20:08:13 -0600
+date: 2024-03-06 20:08:13 -0600
 categories: rants
 After a week of attempting to log in to
 
