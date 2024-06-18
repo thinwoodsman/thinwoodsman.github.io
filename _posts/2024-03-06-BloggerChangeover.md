@@ -2,6 +2,9 @@ layout: post
 title: "RIP, Blogger"
 date: 2024-03-06 20:08:13 -0600
 categories: rants
+
+----------------------------------------------------------------------
+
 After a week of attempting to log in to
 
  https://entrenchant.blogspot.com/ 
