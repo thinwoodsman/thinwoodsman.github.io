@@ -1,17 +1,30 @@
 title: The Sorry Scheme of Things Entire
-#email: your-email@example.com
+name: The Sorry Scheme of Things Entire
 description: >- # this means to ignore newlines until "baseurl:"
   Dissatisfaction with the state of the art
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://thinwoodsman.github.io" 
-#twitter_username: n/a
+author: Thin-Woodsman
 github_username:  thinwoodsman
 
 permalink: /:title/
-#markdown: kramdown
+#layouts_dir: ./_layouts
+
+markdown: kramdown
+mathjax: true
+highlighter: rouge
 paginate: 7
 paginate_path: "/:num/"
 #date_format: "%b %-d, %Y"
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  syntax_highlighter: rouge
+  math_engine: mathjax
+
 
 # Build settings
 theme: minima
