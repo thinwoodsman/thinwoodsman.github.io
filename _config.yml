@@ -8,7 +8,7 @@ author: Thin-Woodsman
 github_username:  thinwoodsman
 
 permalink: /:title/
-#layouts_dir: ./_layouts
+include: [_pages]
 
 markdown: kramdown
 mathjax: true
@@ -25,6 +25,24 @@ kramdown:
   syntax_highlighter: rouge
   math_engine: mathjax
 
+defaults:
+  -
+    scope:
+      type: posts
+      path: _posts
+    values:
+      is_post: true
+      layout: post
+      category: misc
+      permalink: /posts/:categories/:title/
+  -
+    scope:
+      type: pages
+      path: _pages
+    values:
+      is_post: false
+      layout: default
+      #permalink: /:title/
 
 # Build settings
 theme: minima

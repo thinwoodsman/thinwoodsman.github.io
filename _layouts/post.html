@@ -8,11 +8,11 @@ layout: default
 <p class="view">by {{ page.author | default: site.author }}</p>
 {{content}}
 
-{% if page.tags %}
-  <small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small><p>
-{% endif %}
-
-{% if page.category %}
-<!-- <i>Category: <a href="/{{page.category}}"/>{{page.category}}</a></i> -->
-  <small>category: <em>{{page.category}}</em></small><p>
-{% endif %} 
+<span>
+<i><a href="/categories#{{page.category}}"/>{{page.category}}</a></i>
+[
+  {% for tag in page.tags %}
+    {% capture tag_name %}{{ tag }}{% endcapture %}
+    <a href="/tags#{{ tag_name }}"><code class="highlighter-rouge"><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
+  {% endfor %}
+]</span>
