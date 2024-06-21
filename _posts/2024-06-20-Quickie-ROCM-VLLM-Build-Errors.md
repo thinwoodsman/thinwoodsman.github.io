@@ -50,7 +50,7 @@ CMake Error at cmake/utils.cmake:166 (message):
   Supported ROCm architectures are:
   gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1030;gfx1100.
 ```
-OK, this one *can* be solved by poking around in the CMake files. Specifically, in CMakeLists.txt change
+This one *can* be solved by poking around in the CMake files. Specifically, in CMakeLists.txt change
 ```c++
 # Supported AMD GPU architectures.
 set(HIP_SUPPORTED_ARCHS "gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1030;gfx11
@@ -62,7 +62,7 @@ to
 set(HIP_SUPPORTED_ARCHS "gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1030;gfx11
 00;gfx1102;gfx1103;") 
 ```
-OK, the build chugs along nicely for a bit, until...
+The build chugs along nicely for a bit, until...
 
 Problem 4: duplicate symbol in ROCm objects
 ```
@@ -75,7 +75,7 @@ ld.lld: error: duplicate symbol: __float2bfloat16(float)
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ninja: build stopped: subcommand failed.
 ```
-OK, I attempted to build ROCm from scratch to address this, and encountered two immediate problems: 1) the current /opt/rocm is 22GB (how is this OK?!?!) and i might use up my bandwidth and/or available drive space building a new one, but more importantly 2) the ROCm build scripts are incredibly broken. Seriously, they make a lot of assumptions that, it turns out, don't hold on my system. "Be liberal with what you accept, but conservative in what you send" ring a bell, anyone?
+I attempted to build ROCm from scratch to address this, and encountered two immediate problems: 1) the current /opt/rocm is 22GB (how is this OK?!?!) and i might use up my bandwidth and/or available drive space building a new one, but more importantly 2) the ROCm build scripts are incredibly broken. Seriously, they make a lot of assumptions that, it turns out, don't hold on my system. "Be liberal with what you accept, but conservative in what you send" ring a bell, anyone?
 
 Solution:
 This one took awhile to track down, as it's an error in ROCm and not in one of these half-baked AI projects (meaning, presumably, there are *real* software engineers behind this, not purported "researchers"). But it is reported in [https://github.com/vllm-project/vllm/issues/2725](VLLM issue 2725) and a [https://github.com/vllm-project/vllm/pull/2790/files](patch) to ROCm is referenced. You can apply the patch or, if you want to save some time downloading it and checking it, you can
@@ -100,7 +100,6 @@ to
 #define __HOST_DEVICE__ __host__ __device__ static inline
 #endif
 ```
-
 And lo, it builds! And installs! But does it run?
 
 ```python
