@@ -5,7 +5,7 @@ date: 2024-06-20 18:27:13 -0600
 tags: ROCm PyTorch HIP LLM AI Quickies
 category: bug
 ---
-Quick background: The Framework 16 has a Radeon 7700S discrete GPU in addition to its Radeon 780M integrated GPU. HIP detects these cards as gfx1102 and gfx1103 (I haven't determined which is which).
+Quick background: The Framework 16 has a Radeon 7700S discrete GPU in addition to its Radeon 780M integrated GPU. HIP detects these cards as gfx1102 and gfx1103 (respectively, the 7700S and the iGPU, according to rocminfo).
 
 Right off the bat, VLLM requires CUDA, which is a no-go if you haven't overpaid for an NVidia card in recent years. But there is a [https://github.com/EmbeddedLLM/vllm-rocm](VLLM ROCm fork) and it *seems* like it should work.
 
