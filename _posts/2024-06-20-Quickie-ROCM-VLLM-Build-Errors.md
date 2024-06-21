@@ -136,11 +136,6 @@ Nope!
            ^^^^^^^^^^^^^^^^^^^^^^^^
 AssertionError
 ```
-Seriously, to hell with this garbage. Like every other AI project, they probably
-expect me to use a Python Venv or a Docker image so I can download a 5GB copy
-of the developer's workstation to my location machine in order to make their
-specific piece of software work. The industry has forgotten how to code.
-*EDIT*
 OK, that turns out to be a a VLLM problem alright, as documented in [https://github.com/vllm-project/vllm/issues/4323](issue 4323), but its specific to the Phi-3 model, so let's try another.
 ```
 llm = LLM(model="microsoft/Phi-3-mini-128k-instruct", device="cuda")
