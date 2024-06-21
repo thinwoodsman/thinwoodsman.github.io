@@ -2,7 +2,7 @@
 layout: post
 title: "Quickie: ROCM and PyTorch \"RuntimeError: HIP error: invalid device function\""
 date: 2024-06-13 20:08:13 -0600
-tags: ROCm PyTorch HIP LLM AI
+tags: ROCm PyTorch HIP LLM AI Quickies
 category: bug
 ---
 [https://github.com/ROCm/ROCm/issues/2536](ROCm Issue 2536)
