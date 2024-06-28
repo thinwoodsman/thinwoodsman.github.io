@@ -24,6 +24,7 @@ os.putenv("TRANSFORMERS_OFFLINE", "1")
 import torch # to set cuda device
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 from accelerate import infer_auto_device_map
+import gc
 
 model_name = "microsoft/Phi-3-mini-128k-instruct"
 
