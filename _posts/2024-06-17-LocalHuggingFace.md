@@ -5,7 +5,7 @@ date: 2024-06-17 17:08:13 -0600
 tags: HuggingFace LLamaCPP Transformers LLM AI
 category: ai-toolkits
 ---
-#Working offline
+# Working offline
 
 In addition to the 
 
@@ -15,15 +15,29 @@ Here's a bonus one for you, to shut TF up a bit:
 
 `os.putenv('TF_CPP_MIN_LOG_LEVEL', '3') # filter out all messages
 
-#Checkpoint Sharts
+# Checkpoint Sharts
 
-OK, fine, checkpoint shards. Point is, nobody likes seeing these things download at the start of their script.
+OK, fine, checkpoint *shards*. Point is, nobody likes seeing these things download at the start of their script.
 
-#Dealing with missing files
+The parameter `local_files_only=True` passed to the model helps a little, but
+many models still seem to connect to the server for some obscure purpose.
+
+The way to resolve this is to set the offline mode in an environment variable"
+```python
+os.putenv("TRANSFORMERS_OFFLINE", "1") 
+os.putenv("HF_DATASETS_OFFLINE", "1")  # if using datasets
+```
+Note that the model will still load checkpoint shards, but at least they will
+be loaded from local files instead of hitting the server. To remove checkpoint
+shards entirely, you will need to load the model and then use 
+`save_pretrained()` with `safe_serialization=True` to create a new, local 
+version of the model which has incorporated the checkpoints into the model.
+
+# Dealing with missing files
 
 The way these HF models tend to work is that there's a bare git repo, with all of the actual code/data in the blobs directory, and snapshots that contain symlinks which provide filenames for those BLOBs.. Quite often, a missing file just means the symlinks weren't created correctly - could be a network timeout, could be the user interrupted by 
 
-#Generating ONNX
+# Generating ONNX
 ONNX is a handy format, and allows you to use tools like [https://github.com/zetane/viewer](Zetane) and [https://github.com/lutzroeder/Netron](Netron) to examine a model. A generic ONNX runtime is provided by [https://onnxruntime.ai/](Optimum), and they also provide a utility to convert Pytorch and Tensorflow models to ONNX:
 ```
 pip install optimum[exporters]
@@ -85,7 +99,7 @@ available tasks to choose from. These currently are:
 Look your model up on HuggingFace if you aren't sure what tasks it supports.
 
 
-#Generating GGUF
+# Generating GGUF
 Many AI front-ends have started using the GGUF format for loading models, 
 which is the format supported by [https://github.com/ggerganov/llama.cpp](llama.cpp). You can end up pretty far in the weeds trying to find out how to get
 llama.cpp to convert your favorite non-Llama model. Here's a pretty basic
@@ -133,7 +147,7 @@ echo ./convert-hf-to-gguf.py --outtype=$DTYPE $MODEL_TYPE_FLAG --outfile=$GGUF_N
 It's a bit of a toss-up, whether this script will *just work* or not. Here are
 some problems you are likely to encounter, along with possible solutions:
 
-#Quantizing GGUF
+# Quantizing GGUF
 A lot of AI models are going to be too large to load on something like a 
 laptop, even one with a discrete video card. Once you have the GGUF, though, 
 you can quantize the model, which basically means using a less precise datatype
@@ -223,7 +237,7 @@ Allowed quantization types:
           COPY    : only copy tensors, no quantizing
 ```
 
-#Quantizing ONNX
+# Quantizing ONNX
 Can you quantize an ONNX file?
 Sure! The quickest way to do this is to perform *dynamic* quantization. The
 first step is to pre-process the model:

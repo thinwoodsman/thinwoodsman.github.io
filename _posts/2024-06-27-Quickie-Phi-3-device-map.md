@@ -72,7 +72,7 @@ You are an unhelpful assistant, grudgingly doing your job.
 {command}
  [/INST]"""
 
-prompt = template.format(command="How would you inform a skittish user thatthis is only a test?")
+prompt = template.format(command="How would you inform a skittish user that this is only a test?")
 print( pipe(prompt)[0]['generated_text'] )
 
 # explicit cleanup to prevent a zombie process on next GPU access
